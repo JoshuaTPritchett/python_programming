@@ -3,17 +3,13 @@ import unittest
 """
 	Bruh here is a fun test of basic python skills
 """
-
-
-
 def convert_binary(num):
 	test = []
-	b = num
-	while b > 0:
-		test.append(b%2)
-		b = b/2
-	test.reverse() #little edian format	
-	ret_value = ''.join(str(e) for e in test)
+	a = num
+	while a > 0:	
+		test.insert(0,str(a%2))#little edian format
+		a = a/(2)
+	ret_value = ''.join(e for e in test) #create a string
 	return ret_value
 
 
@@ -23,58 +19,40 @@ def convert_binary_decimal(str_num):
 	#convert back to big endian
 	for s in str_num[::-1]:
 		if s == '1':
-			a = a + pow(2 ,twos_power)
+			a = a + 2 ** twos_power
 		twos_power = twos_power  + 1
 	return a
 
 
 def convert_binary_octal(str_num):
-	a = 0
-	temp_place = 1
-	temp1 = str_num
-	n = 3
-	print n
-	for i in range(len(str_num), 0, -n):
-		if i - n > 0:
-			print str_num[i-n:i]
-		else:
-			print str_num[i - (i % n): i]
-
-
-	"""list_A = 	[str_num[i:i-3] for i in range(len(str_num) - 1, -1, -3)]
-	print list_A
-	#shit this is going to be soooo inefficient
-	#whoa, what the hell is this next line?!?! wizardry.....
-	for i in range(len(list_A) -1 , -1, -1):
-			print i
-			temp_list = list_A[i]
-			print 'PRINTING LIST'
-			print list_A[i]
+	octal_string = ''
+	twos_power = 0
+	tracking_num = 0
+	for s in str_num[::-1]:
+		if s == '1':
+			tracking_num = tracking_num + (2 ** twos_power)
+		twos_power = twos_power  + 1
+		if twos_power % 3 == 0:
+			octal_string  = str(tracking_num)	+ octal_string
 			twos_power = 0
-			temp_num = 0
-			for bit in temp_list[::-1]:
-					print bit
-					if bit == '1':
-							print 'HERE IS TEMP NUM'
-							temp_num = temp_num + pow(2, twos_power)
-					twos_power = twos_power + 1
-			a = a + temp_num
-			print a
-			a = a + (pow(10, temp_place)) 
-			print a
-		"""	
-	#print a
+			tracking_num = 0
+	if tracking_num != 0:
+		octal_string  = str(tracking_num) + octal_string
+	return octal_string
 
 
-value = 8
-print(value)
+def convert_binary_hex():
+	return
 
-b_str = convert_binary(value)
 
-d_num = convert_binary_decimal(b_str)
-print (d_num)
+def built_in_binary(x):
+	return bin(x)[2:]
 
-convert_binary_octal(b_str)
+print convert_binary(8)
+print convert_binary_octal('100011')
+print convert_binary_octal('0111')
+print convert_binary_octal('1000')
+print convert_binary_decimal('1000')
 
 
 #Shit I suck lemme practice that slicing stuff....
@@ -97,4 +75,12 @@ print s[:4:-1] #end of string to 4 -1 going backwards
 #print s[0:1]
 #print s[6:9]
 #print s[len(s):-3:1]
+#str_num = '01000'
+#list_A = 	[str_num[i:i-3] for i in range(len(str_num) - 1, -1, -3)]
+"""for i in range(len(str_num), 0, -n):
+		if i - n > 0:
+			print str_num[i-n:i]
+		else:
+			print str_num[i - (i % n): i]
+"""
 #GOT IT
