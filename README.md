@@ -5,6 +5,8 @@ This is the shit I do when I am bored, I am going to use this someday. I SWEAR I
 ####	This will teach me the basics of the language and I will implement various modules that can
 ####	Achieve this goal.
 
+## THIS IS FOR LEARNING PURPOSES SO
+## I CAN KNOW WHAT I AM TALKING ABOUT
 Things to learn (LIST WILL GROWWW)
 * Mutable and Immutable Objects
 * Arithmetic
