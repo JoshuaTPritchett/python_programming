@@ -1,7 +1,8 @@
 from sys import argv
-
+from sys import exit
 #Like a module however import class
 from file_reader import FileReader
+from mylist import MyList
 #module import
 import module
 '''
@@ -75,18 +76,17 @@ fr.write()
 fr.read()
 print fr.contents
 fr.close()'''
-
+'''
 # well this is fancy packing stuff
 # even for arugments?
 def what(*arguments):
     a, b = arguments
     return a, b
 
-
 a, b = what(1, 2)
 print a
 print b
-
 a, b = what("string 1", "string 2")
 print a
 print b
+
